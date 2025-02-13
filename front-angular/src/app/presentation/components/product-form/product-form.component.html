@@ -1,0 +1,24 @@
+<mat-card class="mat-card">
+  <h2>{{ isEditMode ? 'Editar Produto' : 'Adicionar Produto' }}</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label class="title">Nome do Produto</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço</mat-label>
+      <input matInput type="number" formControlName="price" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Disponibilidade</mat-label>
+      <input matInput type="number" formControlName="available" step="1" required />
+    </mat-form-field>
+
+    <button class="button" mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">
+      {{ isEditMode ? 'Salvar Alterações' : 'Adicionar Produto' }}
+    </button>
+  </form>
+
+</mat-card>
